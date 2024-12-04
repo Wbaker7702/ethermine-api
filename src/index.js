@@ -178,11 +178,13 @@ module.exports = class Ethermine {
       })
     }
     setAPIurl(url = 'https://api.ethermine.org', callback){
-      let validapi = ['https://api-ergo.flypool.org', 'https://api-etc.ethermine.org', 'https://api-zcash.flypool.org', 'https://api-ycash.flypool.org', 'https://api-beam.flypool.org', 'https://api-ravencoin.flypool.org', 'https://api.ethpool.org'];
-      if (validapi.indexOf(url) > -1) {
+      const urlLib = require('url');
+      let validHosts = ['api-ergo.flypool.org', 'api-etc.ethermine.org', 'api-zcash.flypool.org', 'api-ycash.flypool.org', 'api-beam.flypool.org', 'api-ravencoin.flypool.org', 'api.ethpool.org'];
+      let parsedUrl = urlLib.parse(url);
+      if (validHosts.includes(parsedUrl.host)) {
         this.apiurl = url;
         callback(false, 'API URL set to: ' + url);
-      }else{
+      } else {
         callback(true, 'API not supported');
       }
     }
