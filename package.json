@@ -1,10 +1,10 @@
 {
   "name": "ethermine-api",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "description": "NodeJS wrapper for ethermine.org API interaction",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha tests/"
+    "test": "mocha tests/ --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,12 @@
     "url": "https://github.com/SloRunner/ethermine-api/issues"
   },
   "homepage": "https://github.com/SloRunner/ethermine-api#readme",
-  "dependencies": {
-    "request": "^2.87.0"
+  "dependencies": {},
+  "optionalDependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "devDependencies": {
     "chai": "^4.3.4",

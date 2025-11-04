@@ -29,20 +29,52 @@ You can also specify an API URL for other pools:
 const ethermine = new Ethermine('https://api-zcash.flypool.org');
 ```
 
-All methods use a callback function with the format `(error, data)`.
+All methods support both callback and Promise patterns. If no callback is provided, the method returns a Promise.
 
-### API Reference
-
-#### `getPoolStats(callback)`
-
-Get the pool's statistics.
-
+**Using callbacks:**
 ```javascript
 ethermine.getPoolStats((err, data) => {
   if (!err) {
     console.log(data);
   }
 });
+```
+
+**Using Promises:**
+```javascript
+ethermine.getPoolStats()
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+```
+
+**Using async/await:**
+```javascript
+try {
+  const data = await ethermine.getPoolStats();
+  console.log(data);
+} catch (err) {
+  console.error(err);
+}
+```
+
+### API Reference
+
+#### `getPoolStats([callback])`
+
+Get the pool's statistics.
+
+**Callback:**
+```javascript
+ethermine.getPoolStats((err, data) => {
+  if (!err) {
+    console.log(data);
+  }
+});
+```
+
+**Promise:**
+```javascript
+const data = await ethermine.getPoolStats();
 ```
 
 #### `getBlockHistory(callback)`
