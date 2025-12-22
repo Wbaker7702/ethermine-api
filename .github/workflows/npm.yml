@@ -1,5 +1,8 @@
 name: Node.js Package Publish - Master
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
